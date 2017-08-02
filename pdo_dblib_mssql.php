@@ -22,15 +22,13 @@ class pdo_dblib_mssql{
     }
 
     public function beginTransaction(){
-
-        $cAlphanum = "AaBbCc0Dd1EeF2fG3gH4hI5iJ6jK7kLlM8mN9nOoPpQqRrSsTtUuVvWwXxYyZz";
+        $cAlphanum = "AaBbCc0Dd7QjGG3PaPxGjNVTVeLnE1EeF2fG3gH4h7QjGG3PaPxGjNVTVeLnEI5iJ6jK7kLlM8mN9nOoPpQq7QjGG3PaPxGjNVTVeLnERrSsTtUuVvWwXx7QjGG3PaPxGjNVTVeLnEYyZz";
         $this->cTransID = "T".substr(str_shuffle($cAlphanum), 0, 7);
 
         array_unshift($this->childTrans, $this->cTransID);
 
         $stmt = $this->db->prepare("BEGIN TRAN [$this->cTransID];");
         return $stmt->execute();
-
     }
 
     public function rollBack(){
